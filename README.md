@@ -4,18 +4,18 @@ My solutions to the Advent of Code puzzles for the 2025 edition, written in C#.
 | AoC Puzzle | Part one | Part two | P1 metrics | P2 metrics |
 | :-- | --: | --: | :--: | :--: |
 | [Day 1: Secret Entrance](./solutions/01/) | 1.1 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | 1.2 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | <sub>18 LoC / 0.23 ms</sub> | <sub>28 LoC / 0.22 ms</sub> |
-| [Day 2: ...](./solutions/02/) | 2.1 | 2.2 | <sub>? LoC / ? ms</sub> | <sub>? LoC / ? ms</sub> |
-| [Day 3: ...](./solutions/02/) | 2.1 | 2.2 | <sub>? LoC / ? ms</sub> | <sub>? LoC / ? ms</sub> |
-| [Day 4: ...](./solutions/02/) | 2.1 | 2.2 | <sub>? LoC / ? ms</sub> | <sub>? LoC / ? ms</sub> |
-| [Day 5: ...](./solutions/02/) | 2.1 | 2.2 | <sub>? LoC / ? ms</sub> | <sub>? LoC / ? ms</sub> |
-| [Day 6: ...](./solutions/02/) | 2.1 | 2.2 | <sub>? LoC / ? ms</sub> | <sub>? LoC / ? ms</sub> |
-| [Day 7: ...](./solutions/02/) | 2.1 | 2.2 | <sub>? LoC / ? ms</sub> | <sub>? LoC / ? ms</sub> |
-| [Day 8: ...](./solutions/02/) | 2.1 | 2.2 | <sub>? LoC / ? ms</sub> | <sub>? LoC / ? ms</sub> |
-| [Day 9: ...](./solutions/02/) | 2.1 | 2.2 | <sub>? LoC / ? ms</sub> | <sub>? LoC / ? ms</sub> |
-| [Day 10: ...](./solutions/02/) | 2.1 | 2.2 | <sub>? LoC / ? ms</sub> | <sub>? LoC / ? ms</sub> |
-| [Day 11: ...](./solutions/02/) | 2.1 | 2.2 | <sub>? LoC / ? ms</sub> | <sub>? LoC / ? ms</sub> |
-| [Day 12: ...](./solutions/02/) | 2.1 | 2.2 | <sub>? LoC / ? ms</sub> | <sub>? LoC / ? ms</sub> |
-| Total runtime |  |  |  | <sub>**unknown ms**</sub> |
+| [Day 2: ...](./solutions/02/) | | | | |
+| [Day 3: ...](./solutions/03/) | | | | |
+| [Day 4: ...](./solutions/04/) | | | | |
+| [Day 5: ...](./solutions/05/) | | | | |
+| [Day 6: ...](./solutions/06/) | | | | |
+| [Day 7: ...](./solutions/07/) | | | | |
+| [Day 8: ...](./solutions/08/) | | | | |
+| [Day 9: ...](./solutions/09/) | | | | |
+| [Day 10: ...](./solutions/10/) | | | | |
+| [Day 11: ...](./solutions/11/) | | | | |
+| [Day 12: ...](./solutions/12/) | | | | |
+| Total runtime |  |  |  | <sub>**0.22 ms**</sub> |
 
 ### Performance metrics
 
