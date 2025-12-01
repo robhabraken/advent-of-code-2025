@@ -8,6 +8,8 @@ Here are my solutions to the puzzles of today. Written chronologically so you ca
 
 This almost was a first time right, if I would've looked at the actual puzzle input before running my solution... because of course the example only uses moves of less than 100 rotations, while the real puzzle input also uses rotations that go well over a 100. So we need to take the modulus of the number of rotations, to stay within the right bandwidth for my -100 and +100 corrections to stay within the dial range of `0..99`. Other than that, parsing the input and looping over the rotations is most of the work. Then we only need to count every occassion we land on `0` after execution that rotation.. 
 
+_After sending in my answer I slightly optimized my solution by moving the modules and the bound checks (to keep my dial in the range of `0..99`) to just counting all dial positions that were a multiple of 100 either way, which is just a tad cleaner and faster._
+
 ## Part 2
 
 This was a bit more complex than I initally envisioned, because you also need to take into account the edge cases of leaving from `0` and ending on `0` to be careful not to count those events twice.
