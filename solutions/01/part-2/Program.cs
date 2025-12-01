@@ -11,17 +11,14 @@ foreach (var line in lines)
     rotations %= 100; // only rotate what's left now
 
     if (line[0].Equals('L'))
-    {
-        if (dial > 0 && rotations > dial) // if we don't leave from the dial point at zero and the number of rotations exceeds the current dial position when turning left
-            answer++;
-
         rotations *= -1;
-    }
 
     dial += rotations;
 
     if (dial < 0)
     {
+        if (dial != rotations) // if we don't leave from the dial point at zero and the number of rotations exceeds the current dial position when turning left
+            answer++;
         dial += 100;
     }
     else if (dial >= 100)
