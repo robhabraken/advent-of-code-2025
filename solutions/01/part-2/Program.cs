@@ -1,7 +1,7 @@
 var lines = File.ReadAllLines("..\\..\\..\\..\\..\\..\\..\\advent-of-code-2025-io\\01\\input.txt");
 
-var password = 0;
 var dial = 50;
+var password = 0;
 
 foreach (var line in lines)
 {
