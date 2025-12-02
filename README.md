@@ -15,7 +15,7 @@ My solutions to the Advent of Code puzzles for the 2025 edition, written in C#.
 | [Day 10: ...](./solutions/10/) | | | | |
 | [Day 11: ...](./solutions/11/) | | | | |
 | [Day 12: ...](./solutions/12/) | | | | |
-| Total runtime |  |  |  | <sub>**0.22 ms**</sub> |
+| Total runtime |  |  |  | <sub>**tbd**</sub> |
 
 ### Performance metrics
 
