@@ -6,9 +6,14 @@ foreach (var range in lines[0].Split(','))
     var edges = range.Split('-');
     for (var id = long.Parse(edges[0]); id <= long.Parse(edges[1]); id++)
     {
-        var strId = id.ToString();
-        if (strId.Length % 2 == 0 && strId[0..(strId.Length / 2)] == strId[(strId.Length / 2)..(strId.Length)])
-            answer += id;
+        var digitCount = (int)Math.Log10(id) + 1;
+        if (digitCount % 2 == 0)
+        {
+            var factor = (long)Math.Pow(10, digitCount / 2);
+            var firstHalf = id / factor;
+            if (firstHalf * factor + firstHalf == id)
+                answer += id;
+        }
     }
 }
 
