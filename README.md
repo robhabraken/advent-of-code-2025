@@ -4,7 +4,7 @@ My solutions to the Advent of Code puzzles for the 2025 edition, written in C#.
 | AoC Puzzle | Part one | Part two | P1 metrics | P2 metrics |
 | :-- | --: | --: | :--: | :--: |
 | [Day 1: Secret Entrance](./solutions/01/) | 1.1 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | 1.2 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | <sub>16 LoC / 0.21 ms</sub> | <sub>28 LoC / 0.22 ms</sub> |
-| [Day 2: Gift Shop](./solutions/02/) | 2.1 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | 2.2 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | <sub>20 LoC / 77.9 ms</sub> | <sub>19 LoC / 369 ms</sub> |
+| [Day 2: Gift Shop](./solutions/02/) | 2.1 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | 2.2 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | <sub>20 LoC / 77.9 ms</sub> | <sub>19 LoC / 339 ms</sub> |
 | [Day 3: Lobby](./solutions/03/) | 3.1 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | 3.2 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | <sub>23 LoC / 0.15 ms</sub> | <sub>26 LoC / 0.31 ms</sub> |
 | [Day 4: ...](./solutions/04/) | | | | |
 | [Day 5: ...](./solutions/05/) | | | | |
