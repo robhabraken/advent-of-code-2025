@@ -8,7 +8,7 @@ foreach (var range in lines[0].Split(','))
     {
         var strId = id.ToString();
         for (var i = 1; i <= strId.Length / 2; i++)
-            if (strId.Replace(strId[0..i], string.Empty).Equals(string.Empty))
+            if (strId.Replace(strId[0..i], string.Empty).Length == 0)
             {
                 answer += id;
                 break;
