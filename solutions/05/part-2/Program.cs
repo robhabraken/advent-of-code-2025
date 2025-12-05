@@ -1,6 +1,6 @@
 var lines = File.ReadAllLines("..\\..\\..\\..\\..\\..\\..\\advent-of-code-2025-io\\05\\input.txt");
 
-var answer = 0L;
+var freshIngredients = 0L;
 var ranges = new List<(long from, long to)>();
 
 foreach (var line in lines)
@@ -14,9 +14,9 @@ foreach (var line in lines)
 while (merge(ref ranges)) ;
 
 foreach (var (from, to) in ranges.Distinct())
-    answer += to - from + 1;
+    freshIngredients += to - from + 1;
 
-Console.WriteLine(answer);
+Console.WriteLine(freshIngredients);
 
 bool merge(ref List<(long from, long to)> ranges)
 {
