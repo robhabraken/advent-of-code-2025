@@ -7,7 +7,7 @@ My solutions to the Advent of Code puzzles for the 2025 edition, written in C#.
 | [Day 2: Gift Shop](./solutions/02/) | 2.1 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | 2.2 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | <sub>20 LoC / 77.9 ms</sub> | <sub>19 LoC / 339 ms</sub> |
 | [Day 3: Lobby](./solutions/03/) | 3.1 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | 3.2 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | <sub>23 LoC / 0.15 ms</sub> | <sub>26 LoC / 0.31 ms</sub> |
 | [Day 4: Printing Department](./solutions/04/) | 4.1 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | 4.2 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | <sub>27 LoC / 1.42 ms</sub> | <sub>45 LoC / 28.6 ms</sub> |
-| [Day 5: ...](./solutions/05/) | | | | |
+| [Day 5: Cafeteria](./solutions/05/) | 5.1 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | 5.2 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | <sub>25 LoC / 0.78 ms</sub> | <sub>45 LoC / 3.02 ms</sub> |
 | [Day 6: ...](./solutions/06/) | | | | |
 | [Day 7: ...](./solutions/07/) | | | | |
 | [Day 8: ...](./solutions/08/) | | | | |
