@@ -27,11 +27,11 @@ bool merge(ref List<(long from, long to)> ranges)
         var overlaps = false;
         foreach (var compare in ranges)
             if (!range.Equals(compare) && isOverlapping(range, compare))
-                {
-                    overlaps = modified = true;
-                    result.Add((Math.Min(range.from, compare.from), Math.Max(range.to, compare.to)));
-                    break;
-                }
+            {
+                overlaps = modified = true;
+                result.Add((Math.Min(range.from, compare.from), Math.Max(range.to, compare.to)));
+                break;
+            }
 
         if (!overlaps)
             result.Add(range);
