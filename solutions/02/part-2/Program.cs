@@ -1,6 +1,6 @@
 var lines = File.ReadAllLines("..\\..\\..\\..\\..\\..\\..\\advent-of-code-2025-io\\02\\input.txt");
 
-var answer = 0L;
+var invalidIDs = 0L;
 foreach (var range in lines[0].Split(','))
 {
     var edges = range.Split('-').Select(long.Parse).ToArray();
@@ -10,10 +10,10 @@ foreach (var range in lines[0].Split(','))
         for (var i = 1; i <= strId.Length / 2; i++)
             if (strId.Replace(strId[0..i], string.Empty).Length == 0)
             {
-                answer += id;
+                invalidIDs += id;
                 break;
             }
     }
 }
 
-Console.WriteLine(answer);
+Console.WriteLine(invalidIDs);
