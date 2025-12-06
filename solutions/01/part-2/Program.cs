@@ -5,18 +5,18 @@ var password = 0;
 
 foreach (var line in lines)
 {
-    var rotations = int.Parse(line[1..]);
-    password += rotations / 100;
-    rotations %= 100;
-    if (line[0].Equals('L')) rotations *= -1;
+    var rotation = int.Parse(line[1..]);
+    password += rotation / 100;
+    rotation %= 100;
+    if (line[0].Equals('L')) rotation *= -1;
 
-    dial += rotations;
+    dial += rotation;
     if (dial < 0)
     {
-        if (dial != rotations) password++;
+        if (dial != rotation) password++;
         dial += 100;
     }
-    else if (dial >= 100)
+    else if (dial > 99)
     {
         if (dial > 100) password++;
         dial -= 100;
