@@ -2,17 +2,17 @@ var lines = File.ReadAllLines("..\\..\\..\\..\\..\\..\\..\\advent-of-code-2025-i
 
 var deltaMap = new int[8, 2] { { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, -1 }, { 0, 1 }, { 1, -1 }, { 1, 0 }, { 1, 1 } };
 
-var answer = 0;
+var accessibleRolls = 0;
 for (var y = 0; y < lines.Length; y++)
     for (var x = 0; x < lines[y].Length; x++)
         if (lines[y][x].Equals('@'))
             isAccessible(y, x);
 
-Console.WriteLine(answer);
+Console.WriteLine(accessibleRolls);
 
 void isAccessible(int y, int x)
 {
-    int dY, dX, rollsAround = 0;
+    int dY, dX, surroundingRolls = 0;
     for (int i = 0; i < 8; i++)
     {
         dY = y + deltaMap[i, 0];
@@ -20,8 +20,8 @@ void isAccessible(int y, int x)
 
         if (dY >= 0 && dY < lines.Length && dX >= 0 && dX < lines[0].Length)
             if (lines[dY][dX].Equals('@'))
-                rollsAround++;
+                surroundingRolls++;
     }
-    if (rollsAround < 4)
-        answer++;
+    if (surroundingRolls < 4)
+        accessibleRolls++;
 }

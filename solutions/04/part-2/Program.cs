@@ -8,30 +8,28 @@ for (var y = 0; y < lines.Length; y++)
     for (var x = 0; x < lines[y].Length; x++)
         map[y, x] = lines[y][x].Equals('@');
 
-while (removeRolls()) ;
+while (removeRolls());
 
 Console.WriteLine(rollsRemoved);
 
 bool removeRolls()
 {
-    var toBeRemoved = new List<(int y, int x)>();
-
+    var unmodified = true;
     for (var y = 0; y < lines.Length; y++)
         for (var x = 0; x < lines[y].Length; x++)
             if (map[y, x])
                 if (isAccessible(y, x))
-                    toBeRemoved.Add((y, x));
+                {
+                    map[y, x] = unmodified = false;
+                    rollsRemoved++;
+                }
 
-    foreach (var (y, x) in toBeRemoved)
-        map[y, x] = false;
-
-    rollsRemoved += toBeRemoved.Count;
-    return toBeRemoved.Count > 0;
+    return !unmodified;
 }
 
 bool isAccessible(int y, int x)
 {
-    int dY, dX, rollsAround = 0;
+    int dY, dX, surroundingRolls = 0;
     for (int i = 0; i < 8; i++)
     {
         dY = y + deltaMap[i, 0];
@@ -39,7 +37,7 @@ bool isAccessible(int y, int x)
 
         if (dY >= 0 && dY < lines.Length && dX >= 0 && dX < lines[0].Length)
             if (map[dY, dX])
-                rollsAround++;
+                surroundingRolls++;
     }
-    return rollsAround < 4;
+    return surroundingRolls < 4;
 }
