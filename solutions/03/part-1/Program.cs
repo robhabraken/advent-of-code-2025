@@ -1,23 +1,23 @@
 var lines = File.ReadAllLines("..\\..\\..\\..\\..\\..\\..\\advent-of-code-2025-io\\03\\input.txt");
 
-var joltageRating = 0;
-foreach (var line in lines)
+var outputJoltage = 0;
+foreach (var bank in lines)
 {
-    var firstDigit = -1;
-    var position = -1;
-    for (var i = 0; i < line.Length - 1; i++)
-        if (line[i] - '0' > firstDigit)
+    var firstDigit = 0;
+    var position = 0;
+    for (var i = 0; i < bank.Length - 1; i++)
+        if (bank[i] - '0' > firstDigit)
         {
-            firstDigit = line[i] - '0';
+            firstDigit = bank[i] - '0';
             position = i;
         }
 
-    var secondDigit = -1;
-    for (var i = position + 1; i < line.Length; i++)
-        if (line[i] - '0' > secondDigit)
-            secondDigit = line[i] - '0';
+    var secondDigit = 0;
+    for (var i = position + 1; i < bank.Length; i++)
+        if (bank[i] - '0' > secondDigit)
+            secondDigit = bank[i] - '0';
 
-    joltageRating += firstDigit * 10 + secondDigit;
+    outputJoltage += firstDigit * 10 + secondDigit;
 }
 
-Console.WriteLine(joltageRating);
+Console.WriteLine(outputJoltage);
