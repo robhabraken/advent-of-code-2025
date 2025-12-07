@@ -11,7 +11,7 @@ foreach (var line in lines)
     ranges.Add((range[0], range[1]));
 }
 
-while (merge(ref ranges)) ;
+while (merge(ref ranges));
 
 foreach (var (from, to) in ranges.Distinct())
     freshIngredients += to - from + 1;
