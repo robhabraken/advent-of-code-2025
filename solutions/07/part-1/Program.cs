@@ -3,7 +3,7 @@ var lines = File.ReadAllLines("..\\..\\..\\..\\..\\..\\..\\advent-of-code-2025-i
 var splittersReached = 0;
 var beams = new HashSet<int> { lines[0].IndexOf('S') };
 
-for (var y = 1; y < lines.Length; y++)
+for (var y = 2; y < lines.Length; y += 2)
     for (var x = 0; x < lines[0].Length; x++)
         if (lines[y][x].Equals('^') && beams.Contains(x))
         {
