@@ -1,7 +1,6 @@
 var lines = File.ReadAllLines("..\\..\\..\\..\\..\\..\\..\\advent-of-code-2025-io\\07\\input.txt");
 
-var beams = new Dictionary<int, long>();
-beams.Add(lines[0].IndexOf('S'), 1);
+var beams = new Dictionary<int, long> { { lines[0].IndexOf('S'), 1 } };
 
 for (var y = 2; y < lines.Length; y += 2)
 {
@@ -10,30 +9,23 @@ for (var y = 2; y < lines.Length; y += 2)
     {
         if (lines[y][x].Equals('^'))
         {
-            if (newBeams.ContainsKey(x - 1))
-                newBeams[x - 1] += beams[x];
-            else
-                newBeams.Add(x - 1, beams[x]);
-            if (newBeams.ContainsKey(x + 1))
-                newBeams[x + 1] += beams[x];
-            else
-                newBeams.Add(x + 1, beams[x]);
+            set(newBeams, x - 1, beams[x]);
+            set(newBeams, x + 1, beams[x]);
         }
         else
-        {
-            if (newBeams.ContainsKey(x))
-                newBeams[x] += beams[x];
-            else
-                newBeams.Add(x, beams[x]);
-        }
+            set(newBeams, x, beams[x]);
     }
     beams = newBeams;
 }
 
-var result = 0L;
-foreach (var x in beams.Keys)
-{
-    result += beams[x];
-}
+var timelines = 0L;
+foreach (var timeline in beams.Keys)
+    timelines += beams[timeline];
 
-Console.WriteLine(result);
+Console.WriteLine(timelines);
+
+void set(Dictionary<int, long> target, int index, long value)
+{
+    if (!target.TryAdd(index, value))
+        target[index] += value;
+}
