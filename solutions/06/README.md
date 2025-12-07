@@ -10,7 +10,7 @@ This is my kind of fun, just a bit of a clever parsing challenge to be honest. W
 
 Now I can just loop over all problems. I know the operator of each set and I know its position. The result of each problem `problemResult` starts of with a `1L` for multiplications (operator `*`) and with a `0L` for additions (operator `+`). Then I loop through the input lines from top to bottom, except the last line with the operator because I already have that information, and then simply take the substring at the position of the current operator to the next one in my problem collection (the tuple list) like so: `lines[i][problems[p].position..problems[p + 1].position]`. Using `Trim()` takes care of the unwanted whitespace I collect this way, and then I parse the result to an `int` and simply perform the math that fits the current operator.
 
-This way, I only loop over each character of the input once and do the math right away, which should be the fastest solution possible and gives me an execution time of only `0.33ms`.
+This way, I only loop over each character of the input just once and do the math right away, which should be the fastest solution possible, which is proven by the execution time of my solution of `0.33ms`.
 
 ## Part 2
 
