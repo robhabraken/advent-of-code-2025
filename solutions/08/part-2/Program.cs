@@ -9,10 +9,9 @@ var answer = 0L;
 var boxesLeft = boxes.Keys.ToList<int>();
 
 var distances = new Dictionary<string, double>();
-foreach (var box in boxes.Values)
-    foreach (var other in boxes.Values)
-        if (box.id != other.id)
-            distances.TryAdd($"{Math.Min(box.id, other.id)}-{Math.Max(box.id, other.id)}", box.Distance(other));
+for (var from = 0; from < boxes.Count; from++)
+    for (var to = from + 1; to < boxes.Count; to++)
+        distances.Add($"{boxes[from].id}-{boxes[to].id}", boxes[from].Distance(boxes[to]));
 
 var circuits = new List<HashSet<int>>();
 foreach (var pair in distances.OrderBy(key => key.Value))
