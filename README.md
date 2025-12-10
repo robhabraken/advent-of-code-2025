@@ -11,7 +11,7 @@ My solutions to the Advent of Code puzzles for the 2025 edition, written in C#.
 | [Day 6: Trash Compactor](./solutions/06/) | 6.1 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | 6.2 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | <sub>25 LoC / 0.33 ms</sub> | <sub>28 LoC / 0.40 ms</sub> |
 | [Day 7: Laboratories](./solutions/07/) | 7.1 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | 7.2 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | <sub>16 LoC / 0.12 ms</sub> | <sub>20 LoC / 0.17 ms</sub> |
 | [Day 8: Playground](./solutions/08/) | 8.1 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | 8.2 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | <sub>66 LoC / 132 ms</sub> | <sub>73 LoC / 212 ms</sub> |
-| [Day 9: ...](./solutions/09/) | | | | |
+| [Day 9: Movie Theater](./solutions/09/) | 9.1 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | 9.2 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | <sub>31 LoC / 1.07 ms</sub> | <sub>169 LoC / 1332 ms</sub> |
 | [Day 10: ...](./solutions/10/) | | | | |
 | [Day 11: ...](./solutions/11/) | | | | |
 | [Day 12: ...](./solutions/12/) | | | | |
