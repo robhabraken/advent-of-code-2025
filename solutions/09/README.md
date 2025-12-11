@@ -1,13 +1,16 @@
-*This is a copy of the original puzzle description. Also, the example input and my personal puzzle input are included in this folder as well as my answers to both parts of today's puzzle. If you want to learn more about my approach to solving these puzzles see [my solutions](https://github.com/robhabraken/advent-of-code-2025/blob/main/solutions/09/README.md).*
+# Solutions to Day 9: Movie Theater
 
----
-# Day 9: Movie Theater
+*For the puzzle description, see [Advent of Code 2025 - Day 9](https://adventofcode.com/2025/day/9).*
+
+Here are my solutions to the puzzles of today. Written chronologically so you can follow both my code and line of thought.
+
+## Part 1
 
 The first part was a very easy warm-up. We just need to calculate the area of all squares that we can form between each possible pair of tiles in the given list. I created a `Tile` class to easily parse the input and reference the coordinates and then loop over the input to store the given tiles in a `Tile[]` array. Then I loop over all tiles, and then over every other tile from the index after that to find all unique pairs. For each pair, if the x- and y-coordinates aren't equal (I'm guestimating that single row or single column squares will never be the largest ones possible), I calculate the area, which is the product of the difference between the x- and y-coordinates. If the calculated area is bigger than the largest one we found, store the new largest area, until we've calculated them all.
 
 The number of tiles is less than 500, so even calculating the area regardless of where they are isn't that expensive. This solution runs in 1ms. The size of the grid though is huge, so we have to stick to math and not create an actual map for this puzzle.
 
-# Part Two
+## Part Two
 
 The second part was the hardest puzzle of 2025 yet I think. It took a while to envision even an approach 'on paper'. And when it clicked, it took quite some time to actually build the solution too. 
 
