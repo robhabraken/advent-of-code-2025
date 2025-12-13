@@ -5,7 +5,6 @@ var boxes = new Dictionary<int, Junction>();
 foreach (var line in lines)
     boxes.Add(index, new Junction(index++, line));
 
-var answer = 0L;
 var boxesLeft = boxes.Keys.ToList<int>();
 
 var distances = new Dictionary<string, double>();
@@ -43,12 +42,10 @@ foreach (var pair in distances.OrderBy(key => key.Value))
 
     if (circuits.Count == 1 && boxesLeft.Count == 0)
     {
-        answer = boxes[junctions[0]].x * (long)boxes[junctions[1]].x;
+        Console.WriteLine(boxes[junctions[0]].x * (long)boxes[junctions[1]].x);
         break;
     }
 }
-
-Console.WriteLine(answer);
 
 class Junction
 {

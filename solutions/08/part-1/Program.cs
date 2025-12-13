@@ -21,7 +21,7 @@ foreach (var pair in distances.OrderBy(key => key.Value).Take(1000))
             occurrences.Add(circuits.IndexOf(circuit));
 
     if (occurrences.Count == 0)
-        circuits.Add(new HashSet<int>() { junctions[0], junctions[1] });
+        circuits.Add([junctions[0], junctions[1]]);
     else if (occurrences.Count == 1)
     {
         circuits[occurrences[0]].Add(junctions[0]);
