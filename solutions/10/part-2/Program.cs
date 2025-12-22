@@ -40,23 +40,9 @@ foreach (var line in lines)
 
     // if the configuration is already determined after simplifying, use that, otherwise continue solving the equations
     if (buttons.All(b => b.value.HasValue))
-    {
         buttonPresses += buttons.Sum(b => b.value!.Value);
-    }
     else
-    {
-        // set degrees
-        foreach (var button in buttons)
-        {
-            var count = 0;
-            foreach (var light in lights)
-                if (light.Count > 0 && light.Contains(button))
-                    count++;
-            button.degree = count;
-        }
-
         buttonPresses += solve(buttons, lights, deltas, target, originalLights, originalTarget);
-    }
 }
 
 sw.Stop();
@@ -231,16 +217,35 @@ static bool simplify(Button[] buttons, List<Button>[] lights, Dictionary<(Button
 static int solve(Button[] buttons, List<Button>[] lights, Dictionary<(Button a, Button b), int> deltas, int[] target, List<Button>[] originalLights, int[] originalTarget)
 {
     // if all buttons have a value, we have either found a valid solution, or an impossible configuration, in which case we return 0
-    if (buttons.All(b => b.value.HasValue))
-    {
-        var presses = buttons.Sum(b => b.value!.Value);
+    var presses = 0;
+    var complete = true;
+    foreach(var button in buttons)
+        if (button.value.HasValue)
+            presses += button.value!.Value;
+        else
+        {
+            complete = false;
+            break;
+        }
+
+    if (complete)
         return isValid(buttons, originalTarget) ? presses : 0;
-    }
 
     // find optimal start
-    var start = buttons.Where(b => !b.value.HasValue)
-                        .OrderBy(b => b.upperBound - b.lowerBound)
-                        .ThenByDescending(b => b.degree).First();
+    Button start = null;
+    var smallestRange = int.MaxValue;
+    for (var i = 0; i < buttons.Length; i++)
+    {
+        if (buttons[i].value.HasValue)
+            continue;
+
+        var range = buttons[i].upperBound - buttons[i].lowerBound;
+        if (range < smallestRange)
+        {
+            start = buttons[i];
+            smallestRange = range;
+        }
+    }
 
     var fewestPresses = int.MaxValue;
 
@@ -303,9 +308,8 @@ class Button
     public int lowerBound;
     public int upperBound;
     public int? value;
-    public int degree;
 
-    private readonly Stack<(int lowerBound, int upperBound, int? value, int degree)> stack = [];
+    private readonly Stack<(int lowerBound, int upperBound, int? value)> stack = [];
 
     public Button(string input, char name, int[] target)
     {
@@ -326,7 +330,7 @@ class Button
 
     public void Save()
     {
-        stack.Push((lowerBound, upperBound, value, degree));
+        stack.Push((lowerBound, upperBound, value));
     }
 
     public void Reset()
@@ -335,7 +339,6 @@ class Button
         lowerBound = memory.lowerBound;
         upperBound = memory.upperBound;
         value = memory.value;
-        degree = memory.degree;
     }
 
     public override string ToString()
