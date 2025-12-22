@@ -273,9 +273,6 @@ static int solve(Button[] buttons, List<Button>[] lights, Dictionary<(Button a, 
         }
     }
 
-    if (fewestPresses == int.MaxValue)
-        fewestPresses = 0;
-
     return fewestPresses;
 }
 
