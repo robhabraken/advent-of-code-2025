@@ -15,7 +15,7 @@ foreach (var line in lines)
     // create buttons
     var buttons = new Button[buttonList.Length];
     for (var i = 0; i < buttonList.Length; i++)
-        buttons[i] = new Button(buttonList[i], i, target);
+        buttons[i] = new Button(buttonList[i], target);
 
     // analyze lights (affected by buttons)
     var lights = new List<Button>[target.Length];
@@ -295,7 +295,6 @@ static bool isValid(List<Button>[] lights, int[] target)
 
 class Button
 {
-    public int id;
     public string input;
     public bool[] affectsLights;
     public int lowerBound;
@@ -304,9 +303,8 @@ class Button
 
     private readonly Stack<(int lowerBound, int upperBound, int? value)> stack = [];
 
-    public Button(string input, int id, int[] target)
+    public Button(string input, int[] target)
     {
-        this.id = id;
         this.input = input;
 
         lowerBound = 0;
