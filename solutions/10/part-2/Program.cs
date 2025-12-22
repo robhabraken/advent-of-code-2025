@@ -1,11 +1,6 @@
-﻿using System.Diagnostics;
-
-var lines = File.ReadAllLines("..\\..\\..\\..\\..\\..\\..\\advent-of-code-2025-io\\10\\input.txt");
+﻿var lines = File.ReadAllLines("..\\..\\..\\..\\..\\..\\..\\advent-of-code-2025-io\\10\\input.txt");
 
 var buttonPresses = 0;
-
-var sw = new Stopwatch();
-sw.Start();
 
 foreach (var line in lines)
 {
@@ -39,9 +34,7 @@ foreach (var line in lines)
         buttonPresses += solve(buttons, lights, deltas, target);
 }
 
-sw.Stop();
-Console.WriteLine(sw.ElapsedMilliseconds + "ms");
-Console.WriteLine("Answer: " + buttonPresses);
+Console.WriteLine(buttonPresses);
 
 static bool simplify(Button[] buttons, List<Button>[] lights, Dictionary<(Button a, Button b), int> deltas, int[] target)
 {
