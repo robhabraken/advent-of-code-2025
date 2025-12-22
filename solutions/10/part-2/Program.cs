@@ -15,7 +15,7 @@ foreach (var line in lines)
     // create buttons
     var buttons = new Button[buttonList.Length];
     for (var i = 0; i < buttonList.Length; i++)
-        buttons[i] = new Button(buttonList[i], (char)(i + 97), target);
+        buttons[i] = new Button(buttonList[i], i, target);
 
     // analyze lights (affected by buttons)
     var lights = new List<Button>[target.Length];
@@ -295,7 +295,7 @@ static bool isValid(List<Button>[] lights, int[] target)
 
 class Button
 {
-    public char name;
+    public int id;
     public string input;
     public bool[] affectsLights;
     public int lowerBound;
@@ -304,9 +304,9 @@ class Button
 
     private readonly Stack<(int lowerBound, int upperBound, int? value)> stack = [];
 
-    public Button(string input, char name, int[] target)
+    public Button(string input, int id, int[] target)
     {
-        this.name = name;
+        this.id = id;
         this.input = input;
 
         lowerBound = 0;
@@ -332,11 +332,5 @@ class Button
         lowerBound = memory.lowerBound;
         upperBound = memory.upperBound;
         value = memory.value;
-    }
-
-    public override string ToString()
-    {
-        var stringValue = value.HasValue ? $"value: {value.Value}" : string.Empty;
-        return $"{name}{input} [{lowerBound} - {upperBound}] {stringValue}";
     }
 }
