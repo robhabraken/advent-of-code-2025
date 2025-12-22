@@ -10,7 +10,7 @@ Here are my solutions to the puzzles of today. Written chronologically so you ca
 
 ## Part 2
 
-This was a proper brain teaser! After writing an optimized brute force (with self-correcting ranges of possibilities) which took over 8 minutes to run, I started from scratch again to find the 'proper' mathematical approach.
+This was a proper brain teaser! After writing an optimized brute force that took over 8 minutes to run, I started from scratch again to find the 'proper' mathematical approach. Here's an elaborate write up on my findings and approach, leading to my final solution.
 
 ### Finding a suitable data format and approach
 Let's start with the first line of the example input:
@@ -199,5 +199,67 @@ That's great! We have our answer! And this means, that there is only _one_ possi
 
 And as it turns out, a lot of machines can be solved using math only. I wrote a method named `simplify()` to narrow down the search space, decreasing the ranges, and also find overlapping button lists that determine exact values (but also derive deltas, like `e + f = 3` means that `e` is always `3 - f`), and that method was able to solve almost 40% of all input lines in under `40ms`. For my first example above, when a solution needs 'experimentation', I wrote the method `solve()` that actually recursively starts testing specific values, which is way heavier of course, but it also uses `simplify()` a lot to constantly narrow the search space. Without any crazy further optimizations, my algorithm now takes a little less than `900ms` to solve all machines, using the logic as explained above.
 
-### The code
+## The code
 
+*As an exception to most of my AoC solutions, I have used inline comments to explain what happens in the code, so I think it's quite self-explanatory (most solutions are so simple they don't need that). So I'm not going to explain my code line by line, but I will explain the structure of the code and the idea behind the main components and functions, so you can understand the logical flow before reading the actual code itself if you like:*
+
+### Button class
+
+Because I need to keep track of a number of properties per button, I have created a `Button` class with the following members:
+- The original input (`(1,3)`)
+- A `bool[]` indicating the affected lights (like so `0101`)
+- The lower bound of the possible range (intially set to `0`)
+- The upper bound of the possible range (initialy set to the lowest target of all affected lights)
+- A nullable integer value, to distinguish `0` as a value from no value found yet
+
+We also need to find a way to test out possible scenarios, with the opportunity to revert back to the initial state. And to make it a little more complicated, this should be possible on multiple depths of the solver. To implement this in the fastest and easiest way possible, I have added a `Stack<>` member too:
+
+- A `Stack<(int lowerBound, int upperBound, int? value)>` member to store the state per loop depth
+
+This way, using a `Save()` and `Reset()` method to push to and pop from the stack, I can easily store states without having to clone `Button` objects.
+
+### Main loop
+
+The main loop loops over the puzzle input and executes the following tasks per machine:
+- Parse the input
+- Create an array of `Button` objects and initialize them
+- Create an array of `List<Button>` objects to keep track of all buttons that affect each light
+- Create an empty Dictionary to store the deltas in per combination of buttons, bi-directional
+- Call `simplify()` to narrow the search space (possibly recursively)
+- If the configuration is determined after this, use the result
+- Otherwise call `solve()` (possibly recursively) to find the fewest number of presses required
+- Add the found amount of presses to the total number of button presses required
+
+### Simplify
+
+The `simplify()` method does a lot of the heavy lifting, immplementing all the tricks I explained in the manual examples above:
+1. If a target is only influenced by one button, set the value, lower bound and upper bound of that button to the target value of that light
+2. If a target is influenced by exactly two lights, set the mutual lower and upper bounds to close in on the possible ranges
+3. Correct the upper bounds of each button with the cumulative lower bounds of all buttons that affect the same light
+4. After doing these corrections, if the lower and upper bounds closed in on one value set that value
+5. Remove any duplicates from the list of equations (in other words, equal button lists with equal values)
+6. Then, if there already are buttons with a fixed value, remove both the button from all lights and their target value from the corresponding lights
+7. Find all subsets with overlap (like `a + e + f = 27` and `a + b + e + f = 224`) and subtract the set from both the list of buttons as well as the target value
+8. Find deltas and store them in a delta map, to further narrow the possible ranges
+9. Verify if the lower bound is still below the upper bound, otherwise we've encountered an impossible value, so we return `false`
+10. Step 6, 7, and 8 of this list could change the set of equations - if they did, call `simplify()` again to see if we can further narrow down our search space
+11. When there are no more changes, the set of equations and ranges becomes stable, and still is valid, return `true`
+
+### Solve
+
+And `solve()` basically just tests different button values in a recursive nested loop:
+* Check if all buttons have a value, if so, check if this is a valid configuration and if so, return the number of presses found, otherwise return `0`
+* Find the button with the smallest range that doesn't have a valid yet - this is the cheapest and quickest variable to test all possibilities with
+* Loop through the range of this button, from lower bound to upper bound
+  - Store the current set of values for each button object by calling `Save()` on each of them
+  - Set the value of the button to a fixed value based on the increment of the loop
+  - Clone all objects that change state when testing a hypothetical fixed value
+  - Call `simplify()` to (recursively) narrow down the search space based on this new state
+  - Call `solve()` resursively, which will return the value found right away if the configuration has a solution, or proceed testing the next button if not
+  - Whenever we have found a configuration that requires fewer presses while still being valid, we store that value locally
+  - When exiting the loop, reset all buttons to their initial states so we can continue testing the next value in the next iteration of the loop
+* When we have tested all possible values in the given range for this button, return the fewest number of presses found
+
+### Helper method isValid()
+
+The helper method `isValid()` just checks if the sum of all button values equals the (current) target configuration. This is required because some tested button values lead to incorrect target configurations and those results should be disgarded.

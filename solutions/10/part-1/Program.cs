@@ -7,7 +7,6 @@ foreach (var line in lines)
     var segments = line.Split(' ');
     var lights = segments[0][1..^1];
     var buttonList = segments[1..^1];
-    var joltageRequirements = segments[^1];
 
     var buttons = new Button[buttonList.Length];
     for (var i = 0; i < buttons.Length; i++)
