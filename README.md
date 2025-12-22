@@ -15,7 +15,7 @@ My solutions to the Advent of Code puzzles for the 2025 edition, written in C#.
 | [Day 10: Factory](./solutions/10/) | 10.1 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | 10.2 <img src="https://www.robhabraken.nl/img/yellow.png" title="Searched online for algorithms or inspiration to solve this problem"> | <sub>68 LoC / 48.3 ms</sub> | <sub>324 LoC / 912 ms</sub> |
 | [Day 11: Reactor](./solutions/11/) | 11.1 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | 11.2 <img src="https://www.robhabraken.nl/img/green.png" title="Solved completely by myself without any help or external input"> | <sub>19 LoC / 0.22 ms</sub> | <sub>77 LoC / 56.9 ms</sub> |
 | [Day 12: Christmas Tree Farm](./solutions/12/) | 12.1 <img src="https://www.robhabraken.nl/img/green-yellow.png" title="Solved myself, involuntarily received a hint or looked up a math or coding detail"> | | <sub>28 LoC / 0.63 ms</sub> | <sub>N/A</sub> |
-| Total runtime |  |  |  | <sub>519 LoC / 2877ms</sub> |
+| Total runtime |  |  |  | <sub>871 LoC / 2877ms</sub> |
 
 ### Performance metrics
 
