@@ -27,12 +27,6 @@ foreach (var line in lines)
                 lights[i].Add(button);
     }
 
-    // create clones to validate configurations found
-    var originalTarget = (int[])target.Clone();
-    var originalLights = new List<Button>[lights.Length];
-    for (int i = 0; i < lights.Length; i++)
-        originalLights[i] = new List<Button>(lights[i]);
-
     var deltas = new Dictionary<(Button a, Button b), int>();
 
     // set known values, narrow ranges, solve variables, remove duplicates, replace subsets, subtract overlap
@@ -42,7 +36,7 @@ foreach (var line in lines)
     if (buttons.All(b => b.value.HasValue))
         buttonPresses += buttons.Sum(b => b.value!.Value);
     else
-        buttonPresses += solve(buttons, lights, deltas, target, originalLights, originalTarget);
+        buttonPresses += solve(buttons, lights, deltas, target);
 }
 
 sw.Stop();
@@ -214,7 +208,7 @@ static bool simplify(Button[] buttons, List<Button>[] lights, Dictionary<(Button
     return true;
 }
 
-static int solve(Button[] buttons, List<Button>[] lights, Dictionary<(Button a, Button b), int> deltas, int[] target, List<Button>[] originalLights, int[] originalTarget)
+static int solve(Button[] buttons, List<Button>[] lights, Dictionary<(Button a, Button b), int> deltas, int[] target)
 {
     // if all buttons have a value, we have either found a valid solution, or an impossible configuration, in which case we return 0
     var presses = 0;
@@ -229,7 +223,7 @@ static int solve(Button[] buttons, List<Button>[] lights, Dictionary<(Button a, 
         }
 
     if (complete)
-        return isValid(buttons, originalTarget) ? presses : 0;
+        return isValid(lights, target) ? presses : 0;
 
     // find optimal start
     Button start = null;
@@ -268,7 +262,7 @@ static int solve(Button[] buttons, List<Button>[] lights, Dictionary<(Button a, 
             if (!simplify(buttons, lightsClone, deltasClone, targetClone))
                 continue;
 
-            var testNextButton = solve(buttons, lightsClone, deltasClone, targetClone, originalLights, originalTarget);
+            var testNextButton = solve(buttons, lightsClone, deltasClone, targetClone);
             if (testNextButton > 0 && testNextButton < fewestPresses)
                 fewestPresses = testNextButton;
         }
@@ -285,16 +279,15 @@ static int solve(Button[] buttons, List<Button>[] lights, Dictionary<(Button a, 
     return fewestPresses;
 }
 
-static bool isValid(Button[] buttons, int[] originalTargets)
+static bool isValid(List<Button>[] lights, int[] target)
 {
-    for (var i = 0; i < originalTargets.Length; i++)
+    for (var i = 0; i < lights.Length; i++)
     {
         var sum = 0;
-        for (int b = 0; b < buttons.Length; b++)
-            if (buttons[b].affectsLights[i])
-                sum += buttons[b].value!.Value;
+        for (var b = 0; b < lights[i].Count; b++)
+            sum += lights[i][b].value!.Value;
 
-        if (sum != originalTargets[i])
+        if (sum != target[i])
             return false;
     }
     return true;
