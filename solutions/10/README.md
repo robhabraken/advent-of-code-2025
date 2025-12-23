@@ -6,7 +6,7 @@ Here are my solutions to the puzzles of today. Written chronologically so you ca
 
 ## Part 1
 
-Knowning this solution would not stand a change for part 2, I wrote a brute force approach using bitwise increments to find all possible combinations. It isn't very quick nor special in any way, but it does the job sufficiently well for part 1.
+Even though I knew this solution would not stand a change for part 2, I wrote a brute force approach using bitwise increments to find all possible combinations. It isn't very quick nor special in any way, but it does the job sufficiently well for part 1.
 
 ## Part 2
 
